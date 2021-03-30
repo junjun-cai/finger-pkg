@@ -1,10 +1,11 @@
-package base
+package db
 
 import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
 	"github.com/jinzhu/gorm"
-	. "github.com/junjun-cai/finger-pkg/object"
+	"github.com/junjun-cai/finger-pkg/conf"
+	"github.com/junjun-cai/finger-pkg/obj"
 	"gopkg.in/mgo.v2"
 	"strings"
 	"time"
@@ -23,8 +24,8 @@ import (
 //Auth:2021-03-30 15:49:04 周二 cole-cai
 //Desc:连接redis
 func ConnectRedis(sec string) (*redis.Pool, error) {
-	d := &DialInfo{}
-	e := LoadSection(sec, d)
+	d := &obj.DialInfo{}
+	e := conf.LoadSection(sec, d)
 	if e != nil {
 		return nil, e
 	}
@@ -55,8 +56,8 @@ func ConnectRedis(sec string) (*redis.Pool, error) {
 //Auth:2021-03-30 15:49:52 周二 cole-cai
 //Desc:连接mongo
 func ConnectMongo(sec string) (*mgo.Session, error) {
-	d := &DialInfo{}
-	e := LoadSection(sec, d)
+	d := &obj.DialInfo{}
+	e := conf.LoadSection(sec, d)
 	if e != nil {
 		return nil, e
 	}
@@ -71,8 +72,8 @@ func ConnectMongo(sec string) (*mgo.Session, error) {
 //Auth:2021-03-30 15:51:13 周二 cole-cai
 //Desc:连接mySQL
 func ConnectMySQL(sec string) (*gorm.DB, error) {
-	d := &DialInfo{}
-	e := LoadSection(sec, d)
+	d := &obj.DialInfo{}
+	e := conf.LoadSection(sec, d)
 	if e != nil {
 		return nil, e
 	}

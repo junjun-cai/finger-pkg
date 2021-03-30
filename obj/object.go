@@ -1,12 +1,12 @@
-package object
+package obj
 
 import "fmt"
 
 //*********************************************************************************
 //@Auth:蔡君君
 //@Date:2021/3/30 15:11
-//@File:object.go
-//@Pack:object
+//@File:obj.go
+//@Pack:obj
 //@Proj:base
 //@Ides:GoLand
 //@Desc:
