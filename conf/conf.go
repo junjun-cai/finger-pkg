@@ -6,7 +6,7 @@ import (
 )
 
 //*********************************************************************************
-//@Auth:蔡君君
+//@Auth:cole-cai
 //@Date:2021/3/30 12:25
 //@File:conf.go
 //@Pack:base
@@ -17,6 +17,8 @@ import (
 
 var i *ini.File
 
+//Auth:2021/03/30 22:04:56 周二 cole-cai
+//Desc:
 func LoadIniConfig(file string) error {
 	var e error
 	i, e = ini.Load(file)
@@ -26,6 +28,8 @@ func LoadIniConfig(file string) error {
 	return nil
 }
 
+//Auth:2021/03/30 22:05:37 周二 cole-cai
+//Desc:
 func LoadSection(sec string, conf interface{}) error {
 	if i == nil {
 		return fmt.Errorf("cant read section,load config must firstly")

@@ -12,7 +12,7 @@ import (
 )
 
 //*********************************************************************************
-//@Auth:蔡君君
+//@Auth:cole-cai
 //@Date:2021/3/30 12:11
 //@File:db.go
 //@Pack:base
@@ -21,7 +21,7 @@ import (
 //@Desc:
 //*********************************************************************************
 
-//Auth:2021-03-30 15:49:04 周二 cole-cai
+//Auth:2021-03-30 22:25:14 周二 cole-cai
 //Desc:连接redis
 func ConnectRedis(sec string) (*redis.Pool, error) {
 	d := &obj.DialInfo{}
@@ -53,7 +53,7 @@ func ConnectRedis(sec string) (*redis.Pool, error) {
 	}, nil
 }
 
-//Auth:2021-03-30 15:49:52 周二 cole-cai
+//Auth:2021-03-30 22:29:32 周二 cole-cai
 //Desc:连接mongo
 func ConnectMongo(sec string) (*mgo.Session, error) {
 	d := &obj.DialInfo{}
@@ -69,7 +69,7 @@ func ConnectMongo(sec string) (*mgo.Session, error) {
 	return c, nil
 }
 
-//Auth:2021-03-30 15:51:13 周二 cole-cai
+//Auth:2021-03-30 22:32:05 周二 cole-cai
 //Desc:连接mySQL
 func ConnectMySQL(sec string) (*gorm.DB, error) {
 	d := &obj.DialInfo{}
