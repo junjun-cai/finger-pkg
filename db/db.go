@@ -61,7 +61,15 @@ func ConnectMongo(sec string) (*mgo.Session, error) {
 	if e != nil {
 		return nil, e
 	}
-	c, e := mgo.Dial(d.Host)
+	a := &mgo.DialInfo{
+		Addrs:     []string{d.Host},
+		Timeout:   time.Duration(d.MaxTimeout) * time.Second,
+		Database:  d.DataBase,
+		Username:  d.User,
+		Password:  d.Password,
+		PoolLimit: d.PoolLimit,
+	}
+	c, e := mgo.DialWithInfo(a)
 	if e != nil {
 		return nil, e
 	}

@@ -6,6 +6,7 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
 	"google.golang.org/protobuf/runtime/protoimpl"
+	"math/rand"
 	"time"
 )
 
@@ -82,4 +83,17 @@ func NewProtoMessage(name string) (proto.Message, error) {
 //Desc:获取message.fullname
 func GetMessageName(m proto.Message) string {
 	return string(protoimpl.X.MessageDescriptorOf(m).FullName())
+}
+
+//Auth:2021/04/01 23:57:16 周四 cole-cai
+//Desc:生成验证码
+func GenValidateCode(width int) string {
+	str := "0123456789"
+	bytes := []byte(str)
+	var result []byte
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	for i := 0; i < width; i++ {
+		result = append(result, bytes[r.Intn(len(bytes))])
+	}
+	return string(result)
 }

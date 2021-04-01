@@ -36,6 +36,7 @@ type User struct {
 	Uuid         string           `bson:"uuid" json:"uuid" redis:"uuid" gorm:"column:uuid"`
 	Password     string           `bson:"password" json:"password" redis:"password" gorm:"column:password"`
 	PhoneNumber  string           `bson:"phone_number" json:"phone_number" redis:"phone_number" gorm:"column:phone_number"`
+	Email        string           `bson:"email" json:"email" redis:"email" gorm:"column:email"`
 	Version      string           `bson:"version" json:"version" redis:"version" gorm:"column:version"`
 	BackPack     string           `bson:"back_pack" json:"back_pack" redis:"back_pack" gorm:"column:back_pack"`
 	GameInfo     string           `bson:"game_info" json:"game_info" redis:"game_info" gorm:"column:game_info"`
@@ -117,4 +118,32 @@ type Log struct {
 	FileSize int
 	OutPut   int
 	Level    int
+}
+
+//Auth:2021/04/01 20:46:46 周四 cole-cai
+//Desc:
+type GoldLog struct {
+	Payer    int64  `json:"payer"`
+	PayerOld int64  `json:"payer_old"`
+	PayerNew int64  `json:"payer_new"`
+	Payee    int64  `json:"payee"`
+	PayeeOld int64  `json:"payee_old"`
+	PayeeNew int64  `json:"payee_new"`
+	Amount   int64  `json:"amount"`
+	Time     int64  `json:"time"`
+	Act      int32  `json:"act"`
+	Info     string `json:"info"`
+	LogId    string `json:"id"`
+}
+
+//Auth:2021/04/01 23:28:02 周四 cole-cai
+//Desc:
+type WebLog struct {
+	Mid      int64  `json:"mid"`
+	Appid    int32  `json:"appid"`
+	Channel  int32  `json:"channel"`
+	Platform int32  `json:"platform"`
+	Version  string `json:"version"`
+	LogId    string `json:"log_id"`
+	Info     string `json:"msg,omitempty"`
 }
