@@ -179,12 +179,12 @@ func getPrefix(level Level) string {
 			t := strings.TrimPrefix(name, m.Path+"/")
 			p := strings.Split(t, ".")[0]
 			if t == name {
-				return fmt.Sprintf("%smain/%s(%d)", prefix, file, line)
+				return fmt.Sprintf("%smain/%s(%d):", prefix, file, line)
 			}
-			return fmt.Sprintf("%s%s/%s(%d)", prefix, p, file, line)
+			return fmt.Sprintf("%s%s/%s(%d):", prefix, p, file, line)
 		}
 		sp := strings.Split("xxx/"+name, "/")
-		return fmt.Sprintf("%s%s/%s(%d)", prefix, strings.Split(sp[len(sp)-1], ".")[0], file, line)
+		return fmt.Sprintf("%s%s/%s(%d):", prefix, strings.Split(sp[len(sp)-1], ".")[0], file, line)
 	}
 	return prefix + ": "
 }

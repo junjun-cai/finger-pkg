@@ -35,7 +35,7 @@ type User struct {
 	Icon         string           `bson:"icon" json:"icon" redis:"icon" gorm:"column:icon"`
 	Uuid         string           `bson:"uuid" json:"uuid" redis:"uuid" gorm:"column:uuid"`
 	Password     string           `bson:"password" json:"password" redis:"password" gorm:"column:password"`
-	PhoneNumber  string           `bson:"phone_number" json:"phone_number" redis:"phone_number" gorm:"column:phone_number"`
+	Phone        string           `bson:"phone" json:"phone" redis:"phone" gorm:"column:phone"`
 	Email        string           `bson:"email" json:"email" redis:"email" gorm:"column:email"`
 	Version      string           `bson:"version" json:"version" redis:"version" gorm:"column:version"`
 	BackPack     string           `bson:"back_pack" json:"back_pack" redis:"back_pack" gorm:"column:back_pack"`
