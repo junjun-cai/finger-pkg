@@ -173,18 +173,20 @@ func getPrefix(level Level) string {
 	pc, file, line, ok := runtime.Caller(2)
 	if ok {
 		name := runtime.FuncForPC(pc).Name()
-		m, e := debug.ReadBuildInfo()
+		nn := strings.Split(name, ".")
+		fun := nn[len(nn)-1]
+		m, ok := debug.ReadBuildInfo()
 		file = path.Base(file)
-		if e {
+		if ok {
 			t := strings.TrimPrefix(name, m.Path+"/")
 			p := strings.Split(t, ".")[0]
 			if t == name {
-				return fmt.Sprintf("%smain/%s(%d):", prefix, file, line)
+				return fmt.Sprintf("%smain/%s(%d)[%s]:", prefix, file, line, fun)
 			}
-			return fmt.Sprintf("%s%s/%s(%d):", prefix, p, file, line)
+			return fmt.Sprintf("%s%s/%s(%d)[%s]:", prefix, p, file, line, fun)
 		}
-		sp := strings.Split("xxx/"+name, "/")
-		return fmt.Sprintf("%s%s/%s(%d):", prefix, strings.Split(sp[len(sp)-1], ".")[0], file, line)
+		sp := strings.Split("???_test/"+name, "/")
+		return fmt.Sprintf("%s%s/%s(%d)[%s]:", prefix, strings.Split(sp[len(sp)-1], ".")[0], file, line, fun)
 	}
 	return prefix + ": "
 }

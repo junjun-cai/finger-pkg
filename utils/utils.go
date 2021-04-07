@@ -121,3 +121,15 @@ func ValidatePhone(phone string) bool {
 	reg := regexp.MustCompile(pattern)
 	return reg.MatchString(phone)
 }
+
+//Auth:2021/04/04 23:06:22 周日 cole-cai
+//Desc:
+func RetryTimes(name string, times int, duration time.Duration, fn func() error) error {
+	for i := 0; i < times; i++ {
+		if err := fn(); err == nil {
+			return nil
+		}
+		time.Sleep(duration)
+	}
+	return fmt.Errorf("%s retry %d times,still failed", name, times)
+}
